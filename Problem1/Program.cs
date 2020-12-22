@@ -34,34 +34,36 @@ namespace Problem1
                 }
                 Gender G = (Gender)Enum.Parse(typeof(Gender), gen);
                 int d= -1, m = -1, y= -1;
-                Console.WriteLine("Enter Hiredate:");
-                while (d<=0 || d>31)
+               
+                while (d<=0 || d>31 || m <= 0 || m > 12|| y <= 1900 || y > 2020)
                 {
-                    Console.WriteLine("Day:");
-                    d = int.Parse(Console.ReadLine());
-                    if(d<=0 || d>31)
-                        Console.WriteLine("Invalid Day, Please try again");
+                    Console.WriteLine("Enter Hiredate:");
+                    String HD = Console.ReadLine();
+                    String[] arr = HD.Split('/');
 
+                    if (arr.Length == 3)
+                    {
+                        d = arr[0] == null ? -1 : int.Parse(arr[0]);
+
+                        m = arr[1] == null ? -1 : int.Parse(arr[1]);
+
+                        y = arr[2] == null ? -1 : int.Parse(arr[2]);
+                    }
+
+
+                            if(arr.Length!=3)
+                                Console.WriteLine("Invalid Format");
+                            else if (d <= 0 || d > 31)
+                                Console.WriteLine("Invalid Day, Please try again");
+                            else if (m <= 0 || m > 12)
+                                Console.WriteLine("Invalid Month, Please try again");
+                            else if (y <= 1900 || y > 2020)
+                                Console.WriteLine("Invalid year, Please try again");
+                       
 
                 }
 
-                while (m<= 0 || m > 12)
-                {
-                    Console.WriteLine("Month:");
-                    m= int.Parse(Console.ReadLine());
-                    if (m <= 0 || m > 12)
-                        Console.WriteLine("Invalid Month, Please try again");
-
-                }
-
-                while (y <= 1900 || y > 2020)
-                {
-                    Console.WriteLine("Year:");
-                    y = int.Parse(Console.ReadLine());
-                    if (y <= 1900 || y > 2020)
-                        Console.WriteLine("Invalid year, Please try again");
-
-                }
+                
 
                 EmpArr[i] = new Employee(ID, SL, Sal, G, d, m, y);
                 Console.WriteLine("");
