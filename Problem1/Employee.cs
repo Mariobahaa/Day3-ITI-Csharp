@@ -28,15 +28,14 @@ namespace Problem1
 
         public override string ToString()
         {
-            String data = "";
-            data += "Employee ID: " + id + "\n";
-            data += "Security Level: " + securityLevel + "\n";
-            data += "Salary: " + salary.ToString("C") + "\n";
-            data += "Gender: " + gender + "\n";
-            data += "Hire date: " + hireDate.getDay() + "/"
-                                  + hireDate.getMonth() + "/"
-                                  + hireDate.getyear() + "\n";
-            return data;
+            StringBuilder data = new StringBuilder("", 100);
+            data.Append($"Employee ID: {id} \n");
+            data.Append($"Security Level: {securityLevel} \n");
+            data.Append($"Salary: {salary.ToString("C")} \n");
+            data.Append($"Gender: {gender} \n");
+            data.Append($"Hiredate: {hireDate.getDay()}/{hireDate.getMonth()}/{hireDate.getyear()}");
+
+            return data.ToString();
         }
 
     }
